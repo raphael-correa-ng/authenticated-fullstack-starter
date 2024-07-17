@@ -1,0 +1,34 @@
+services:
+  mysqldb:
+    image: mysql:8.0.22
+    container_name: mysqldb
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: example
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - spring-boot-mysql-network
+
+  web:
+    container_name: spring-boot-backend
+    build: ./
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysqldb
+    networks:
+      - spring-boot-mysql-network
+    restart: on-failure
+    environment:
+      spring.datasource.username: root
+      spring.datasource.password: password
+      spring.datasource.url: jdbc:mysql://mysqldb:3306/example?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
+
+volumes:
+  mysql-data:
+
+networks:
+  spring-boot-mysql-network:

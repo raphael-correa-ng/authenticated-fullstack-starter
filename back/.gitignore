@@ -1,0 +1,24 @@
+# Compiled class file
+/target/
+
+# Log files
+/logs/
+
+# IDE files
+/.idea/
+*.iml
+*.ipr
+*.iws
+
+# Maven specific files
+mvnw
+mvnw.cmd
+/.mvn/
+
+# Gradle specific files
+.gradle/
+build/
+
+# OS generated files
+.DS_Store
+Thumbs.db
