@@ -1,0 +1,1 @@
+insert into user_credentials(username, password, authority) values('admin', 'admin', 1);

@@ -12,11 +12,28 @@ services:
     networks:
       - spring-boot-mysql-network
 
-  web:
-    container_name: spring-boot-backend
-    build: ./
+  spring-boot-auth:
+    container_name: fullstack-starter-auth
+    build:
+      context: .
+      args:
+        SERVICE: auth
     ports:
       - "8080:8080"
+    depends_on:
+      - mysqldb
+    networks:
+      - spring-boot-mysql-network
+    restart: on-failure
+
+  spring-boot-my-service:
+    container_name: fullstack-starter-my-service
+    build:
+      context: .
+      args:
+        SERVICE: my-service
+    ports:
+      - "8081:8081"
     depends_on:
       - mysqldb
     networks:
@@ -25,7 +42,7 @@ services:
     environment:
       spring.datasource.username: root
       spring.datasource.password: password
-      spring.datasource.url: jdbc:mysql://mysqldb:3306/example?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
+      spring.datasource.url: jdbc:mysql://mysqldb:3306/my-service?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
 
 volumes:
   mysql-data:
