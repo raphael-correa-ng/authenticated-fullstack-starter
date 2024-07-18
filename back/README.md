@@ -8,6 +8,6 @@ docker-compose up --build
 
 #### Notes
 
-If Intellij doesn't find the Maven dependencies, do `File > Invalidate Caches > Invalid and restart`
+If Intellij doesn't find the Maven dependencies, do `File > Invalidate Caches > Invalid and restart`.
 
-Strong Docker & MySQL error, solved by [this](https://stackoverflow.com/questions/77344634/azerothcore-docker-install-db-fails-with-upgrade-is-not-supported-after-a-cras).
+MySQL wouldn't start on Docker, solved by [this](https://stackoverflow.com/questions/77344634/azerothcore-docker-install-db-fails-with-upgrade-is-not-supported-after-a-cras).
