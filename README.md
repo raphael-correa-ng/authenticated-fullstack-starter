@@ -42,5 +42,5 @@ Then, to access the Docker files in `back/`, you need to use the "Project Files"
 
 #### TODO
 
-- The authentication microservice is up and running on Docker; however, it's not in use yet. I need to connect it to the `my-service` microservice and to the frontend. Coming soon.
-- Convert `auth` microservice and `auth-api` module to Kotlin
+- Need to change the `my-service` microservice to only accept authenticated requests
+- Maybe convert `auth` microservice and `auth-api` module to Kotlin
