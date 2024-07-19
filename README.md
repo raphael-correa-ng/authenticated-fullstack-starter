@@ -43,7 +43,7 @@ In oder for this to work, the Docker files needed to be directly under `back/`, 
 
 #### Notes
 
-To best work on this project on Intellij, import the `front/` and `back/` directories as modules.
+To best work on this project on Intellij, import the `front/` and `back/*` directories as modules.
 
 Do: 
 
