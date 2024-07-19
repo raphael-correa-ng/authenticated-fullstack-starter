@@ -1,11 +1,11 @@
 interface Props {
-    text?: string;
+  text?: string;
 }
 
 function TextDisplay(props: Props) {
-    return <>
-        <p>Reading (debounced) value from store: { props.text }</p>
-    </>
+  return <>
+    <p>Reading (debounced) value from store: { props.text }</p>
+  </>
 }
 
 export default TextDisplay;

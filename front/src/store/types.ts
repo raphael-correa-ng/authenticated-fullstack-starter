@@ -1,3 +1,3 @@
 export interface State {
-    text?: string
+  text?: string
 }

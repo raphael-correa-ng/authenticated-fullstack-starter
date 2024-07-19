@@ -8,10 +8,10 @@ export default class AuthService {
 
   public login(username, password) {
     const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: `username=${username}&password=${password}`,
-        credentials: 'include' as RequestCredentials
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `username=${username}&password=${password}`,
+      credentials: 'include' as RequestCredentials
     };
 
     return fetch(this.url + '/login', requestOptions)
@@ -20,8 +20,8 @@ export default class AuthService {
 
   public logout() {
     const requestOptions = {
-        method: 'POST',
-        credentials: 'include' as RequestCredentials
+      method: 'POST',
+      credentials: 'include' as RequestCredentials
     };
 
     return fetch(this.url + '/logout', requestOptions)
@@ -30,10 +30,10 @@ export default class AuthService {
 
   public register(username, password) {
     const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: `username=${username}&password=${password}`,
-        credentials: 'include' as RequestCredentials
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `username=${username}&password=${password}`,
+      credentials: 'include' as RequestCredentials
     };
 
     return fetch(this.url + '/register', requestOptions);                                                                                                                                     

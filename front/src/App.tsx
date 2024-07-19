@@ -11,45 +11,45 @@ import StoreManager from './store/StoreManager';
 import MyModelsDisplay from './components/MyModelsDisplay';
 
 export interface ServicesConfig {
-    authServiceUrl: string;
-    myServiceUrl: string;
+  authServiceUrl: string;
+  myServiceUrl: string;
 }
 
 interface Props extends State {
-    storeManager: StoreManager;
-    servicesConfig: ServicesConfig;
+  storeManager: StoreManager;
+  servicesConfig: ServicesConfig;
 }
 
 function App(props: Props) {
 
-    const {
-        storeManager,
-        servicesConfig,
-        text
-    } = props;
+  const {
+    storeManager,
+    servicesConfig,
+    text
+  } = props;
 
-    const authService = new AuthService(servicesConfig.authServiceUrl);
-    const myService = new MyService(servicesConfig.myServiceUrl);
+  const authService = new AuthService(servicesConfig.authServiceUrl);
+  const myService = new MyService(servicesConfig.myServiceUrl);
 
-    console.log(servicesConfig);
+  console.log(servicesConfig);
 
-    return <div id="stock-app">
-        <div className="container">
-            <Nav/>
-            <Header title="React Frontend" subtitle="sample application"/>
-            <hr></hr>
-            <MyModelsDisplay myService={myService}/>
-            <hr></hr>
-            <TextInput storeManager={storeManager}/>
-            <TextDisplay text={text}/>
-        </div>
-    </div>;
+  return <div id="stock-app">
+    <div className="container">
+      <Nav/>
+      <Header title="React Frontend" subtitle="sample application"/>
+      <hr></hr>
+      <MyModelsDisplay myService={myService}/>
+      <hr></hr>
+      <TextInput storeManager={storeManager}/>
+      <TextDisplay text={text}/>
+    </div>
+  </div>;
 }
 
 const mapStateToProps = state => {
-    return {
-        text: state.text
-    };
+  return {
+    text: state.text
+  };
 };
 
 export default connect(mapStateToProps)(App);
