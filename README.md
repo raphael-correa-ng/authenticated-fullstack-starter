@@ -4,9 +4,13 @@ A Kotlin/SpringBoot/MySQL microservice paired with a TypeScript/React/Redux fron
 
 Features authentication
 
+<hr>
+
 #### Dependencies
 
 * [Docker](https://www.docker.com/)
+
+<hr>
 
 #### Build & run
 
@@ -20,9 +24,16 @@ Auth microservice: http://localhost:8080
 
 My-Service microservice: http://localhost:8081
 
+<hr>
+
 #### Other features
 
-The Docker configurations here implements a way to use local Maven dependencies during build. See `back/DockerFileWithDepedency`.
+The Docker configurations here implements a way to use local Maven dependencies during build. 
+See `back/DockerFileWithDepedency`.
+
+In oder for this to work, the Docker files needed to be directly under `back/`, not inside each microservice - because Docker does not allow accessing files outside the working directory.
+
+<hr>
 
 #### Notes
 
@@ -40,7 +51,10 @@ For each:
 
 Then, to access the Docker files in `back/`, you need to use the "Project Files" view. It's not perfect, but it's one way to keep the entire project in one IDE window.
 
+<hr>
+
 #### TODO
 
 - Need to change the `my-service` microservice to only accept authenticated requests
 - Maybe convert `auth` microservice and `auth-api` module to Kotlin
+- Run integration tests on Docker
