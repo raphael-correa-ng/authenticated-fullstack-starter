@@ -1,0 +1,37 @@
+services:
+  mysqldb-it:
+    image: mysql:8.0.22
+    container_name: mysqldb-it
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: example
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - spring-boot-mysql-network-test
+
+  spring-boot-auth-it:
+    container_name: fullstack-starter-auth-it
+    build:
+      context: .
+      dockerfile: DockerfileWithDependency-it
+      args:
+        DEPENDENCY: auth-api
+        SERVICE: auth
+    ports:
+      - target: 7070
+        published: 7070
+        protocol: tcp
+    depends_on:
+      - mysqldb-it
+    networks:
+      - spring-boot-mysql-network-test
+    restart: on-failure
+
+volumes:
+  mysql-data:
+
+networks:
+  spring-boot-mysql-network-test:

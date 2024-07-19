@@ -24,6 +24,12 @@ Auth microservice: http://localhost:8080
 
 My-Service microservice: http://localhost:8081
 
+#### Run integration tests
+
+<pre>
+cd back && docker-compose -f docker-compose-it.yml up --build --remove-orphans
+</pre>
+
 <hr>
 
 #### Other features
@@ -57,4 +63,4 @@ Then, to access the Docker files in `back/`, you need to use the "Project Files"
 
 - Need to change the `my-service` microservice to only accept authenticated requests
 - Maybe convert `auth` microservice and `auth-api` module to Kotlin
-- Run integration tests on Docker
+- Fix `auth` microservice integration tests
