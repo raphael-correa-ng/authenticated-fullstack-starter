@@ -1,4 +1,4 @@
-## Fullstack-Starter
+## Authenticated Fullstack Starter
 
 A Kotlin/SpringBoot/MySQL microservice paired with a TypeScript/React/Redux frontend, running on Docker
 
@@ -26,14 +26,19 @@ The Docker configurations here implements a way to use local Maven dependencies 
 
 #### Notes
 
-To best work on this project on Intellij, import the `front/` and `back/` directories as modules:
+To best work on this project on Intellij, import the `front/` and `back/` directories as modules.
 
-- File > New > Module From Existing Sources... > select `front/` directory
-- File > New > Module From Existing Sources... > select `back/auth/pom.xml`
-- File > New > Module From Existing Sources... > select `back/auth-api/pom.xml`
-- File > New > Module From Existing Sources... > select `back/my-service/pom.xml`
+Do: 
 
-Then, to access the Docker files in `back/`, you need to use the "Project Files" view.
+*File > New > Module From Existing Sources...*
+
+For each:
+- `front/` (whole directory)
+- `back/auth/pom.xml`
+- `back/auth-api/pom.xml`
+- `back/my-service/pom.xml`
+
+Then, to access the Docker files in `back/`, you need to use the "Project Files" view. It's not perfect, but it's one way to keep the entire project in one IDE window.
 
 #### TODO
 
