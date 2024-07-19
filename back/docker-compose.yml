@@ -16,7 +16,9 @@ services:
     container_name: fullstack-starter-auth
     build:
       context: .
+      dockerfile: DockerfileWithDependency
       args:
+        DEPENDENCY: auth-api
         SERVICE: auth
     ports:
       - "8080:8080"
@@ -30,6 +32,7 @@ services:
     container_name: fullstack-starter-my-service
     build:
       context: .
+      dockerfile: Dockerfile
       args:
         SERVICE: my-service
     ports:
