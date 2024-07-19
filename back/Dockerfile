@@ -7,7 +7,6 @@ COPY ${SERVICE}/pom.xml .
 COPY ${SERVICE}/src ./src
 RUN mvn clean package
 
-# Stage 2: Create a lightweight runtime environment
 FROM maven:3.9.7-eclipse-temurin-22
 
 ARG SERVICE

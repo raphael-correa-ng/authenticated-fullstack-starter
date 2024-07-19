@@ -21,7 +21,6 @@ COPY --from=BUILD-DEPENDENCY /usr/src/rcs/${DEPENDENCY}/target/fullstack-starter
 mvn install:install-file -Dfile=fullstack-starter-${DEPENDENCY}-1.0-SNAPSHOT.jar -DgroupId=com.rcs -DartifactId=fullstack-starter-${DEPENDENCY} -Dversion=1.0-SNAPSHOT -Dpackaging=jar; \
 RUN mvn clean package
 
-# Stage 2: Create a lightweight runtime environment
 FROM maven:3.9.7-eclipse-temurin-22
 
 ARG SERVICE
