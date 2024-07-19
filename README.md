@@ -20,6 +20,10 @@ Auth microservice: http://localhost:8080
 
 My-Service microservice: http://localhost:8081
 
+#### Other features
+
+The Docker configurations here implements a way to use local Maven dependencies during build. See `back/DockerFileWithDepedency`.
+
 #### Notes
 
 To best work on this project on Intellij, import the `front/` and `back/` directories as modules:
