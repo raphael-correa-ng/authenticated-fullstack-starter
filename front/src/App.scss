@@ -24,6 +24,11 @@
       font-size: 1.2em;
     }
 
+    .container {
+      @extend .flex-row-space-between;
+      align-items: baseline;
+    }
+
     a:not(.logout) {
       text-decoration: none;
       color: #777;

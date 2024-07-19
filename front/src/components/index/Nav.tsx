@@ -30,7 +30,7 @@ function Nav(props: Props) {
         isLoggedIn &&
         <div className="flex-row">
           <a>
-            Logged in
+            Logged in as { userInfo?.username }
           </a>
           <a className="logout" onClick={handleLogout}>
             logout
