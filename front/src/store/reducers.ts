@@ -6,10 +6,10 @@ const defaultState: State = {
 
 export default function rootReducer(state: State = defaultState, action): State {
   switch (action.type) {
-    case 'set-text':
+    case 'set-user-info':
       return {
         ...state,
-        text: action.text
+        userInfo: action.userInfo
       };
 
     default:

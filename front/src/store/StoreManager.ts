@@ -1,3 +1,5 @@
+import { UserInfo } from './types'
+
 export default class StockAppManager {
 
   private readonly store;
@@ -6,10 +8,10 @@ export default class StockAppManager {
     this.store = store;
   }
 
-  public setText(text: string) {
-    this.store.dispatch({ 
-      type: 'set-text',
-      text
+  public setUserInfo(userInfo: UserInfo) {
+    this.store.dispatch({
+      type: 'set-user-info',
+      userInfo
     });
   }
 }
