@@ -9,5 +9,9 @@ docker-compose up --build
 #### Build & run for development
 
 <pre>
+npm install
+</pre>
+
+<pre>
 export NODE_OPTIONS=--openssl-legacy-provider && npm start
 </pre>

@@ -9,6 +9,7 @@ import rootReducer from './store/reducers';
 import StockAppManager from './store/StoreManager';
 
 const servicesConfig = {
+  authServiceUrl: process.env.REACT_APP_AUTH_SERVICE_URL,
   myServiceUrl: process.env.REACT_APP_MY_SERVICE_URL
 };
 

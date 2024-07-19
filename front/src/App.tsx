@@ -5,11 +5,13 @@ import Header from './components/Header';
 import TextInput from './components/TextInput';
 import TextDisplay from './components/TextDisplay';
 import './App.scss';
+import AuthService from './services/AuthService';
 import MyService from './services/MyService';
 import StoreManager from './store/StoreManager';
 import MyModelsDisplay from './components/MyModelsDisplay';
 
 export interface ServicesConfig {
+    authServiceUrl: string;
     myServiceUrl: string;
 }
 
@@ -26,7 +28,10 @@ function App(props: Props) {
         text
     } = props;
 
+    const authService = new AuthService(servicesConfig.authServiceUrl);
     const myService = new MyService(servicesConfig.myServiceUrl);
+
+    console.log(servicesConfig);
 
     return <div id="stock-app">
         <div className="container">
