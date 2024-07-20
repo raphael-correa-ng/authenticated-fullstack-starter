@@ -63,4 +63,3 @@ Then, to access the Docker files in `back/`, you need to use the "Project Files"
 
 - Need to change the `my-service` microservice to only accept authenticated requests
 - Maybe convert `auth` microservice and `auth-api` module to Kotlin
-- Fix `auth` microservice integration tests
