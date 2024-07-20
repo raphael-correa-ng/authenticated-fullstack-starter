@@ -13,7 +13,8 @@ export default class MyService {
 
   public async getMyModels(): Promise<MyModel[]> {
     const requestOptions = {
-      method: 'GET'
+      method: 'GET',
+      credentials: 'include' as RequestCredentials
     };
 
     return await fetch(this.url + '/my-models', requestOptions)

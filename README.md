@@ -64,9 +64,3 @@ For each:
 - `back/my-service/pom.xml`
 
 Then, to access the Docker files in `back/`, you need to use the "Project Files" view. It's not perfect, but it's one way to keep the entire project in one IDE window.
-
-<hr>
-
-#### TODO
-
-- Need to change the `my-service` microservice to only accept authenticated requests
