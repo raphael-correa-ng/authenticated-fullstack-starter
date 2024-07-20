@@ -1,6 +1,6 @@
 package com.rcs.models
 
-import jakarta.persistence.*
+import javax.persistence.*
 
 @Entity
 @Table(name = "my_models")
