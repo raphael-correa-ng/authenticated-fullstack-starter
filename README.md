@@ -1,6 +1,14 @@
 ## Authenticated Fullstack Starter
 
-A Java/SpringBoot/MySQL microservice paired with a TypeScript/React/Redux frontend, running on Docker
+A starter-kit for a fullstack application, featuring microservices, authentication, integration tests, and running on Docker
+
+<hr>
+
+#### Tech stack
+
+Backend: Java/Kotlin, SpringBoot, MySQL
+
+Frontend: React, TypeScript, Redux
 
 Features authentication
 
