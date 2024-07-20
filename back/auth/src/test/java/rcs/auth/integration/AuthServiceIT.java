@@ -10,16 +10,19 @@ import org.junit.runner.Description;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.FormHttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import rcs.auth.api.AuthService;
 import rcs.auth.api.models.AuthenticatedUser;
 import rcs.auth.api.models.LoginCredentials;
 import rcs.auth.api.models.UserAuthority;
 
+import java.util.Arrays;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -40,7 +43,15 @@ public class AuthServiceIT {
 
     @Before
     public void setup() {
-        target = new AuthService("http://localhost:" + port, new TestRestTemplate().getRestTemplate());
+        var jsonConverter = new MappingJackson2HttpMessageConverter();
+        jsonConverter.setSupportedMediaTypes(Arrays.asList(MediaType.TEXT_PLAIN, MediaType.APPLICATION_JSON));
+
+        var restTemplate = new RestTemplateBuilder()
+                .additionalMessageConverters(new FormHttpMessageConverter())
+                .additionalMessageConverters(jsonConverter)
+                .build();
+
+        target = new AuthService("http://localhost:" + port, restTemplate);
     }
 
     // unlike @After, this also runs when exceptions are thrown inside test methods

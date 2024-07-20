@@ -3,11 +3,11 @@ package rcs.auth.api;
 import org.springframework.http.*;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.*;
 import rcs.auth.api.models.*;
 
-import java.util.Map;
 import java.util.Optional;
+import java.util.function.Supplier;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -33,11 +33,11 @@ public class AuthService {
 
         HttpEntity<MultiValueMap<String, Object>> entity = new HttpEntity<>(params, headers);
 
-        ResponseEntity<Void> response = restTemplate.exchange(
+        ResponseEntity<Void> response = catching(() -> restTemplate.exchange(
                 createUrl("/login"),
                 HttpMethod.POST,
                 entity,
-                Void.class);
+                Void.class));
 
         return Optional.ofNullable(response.getHeaders().get("Set-Cookie"))
                 .map(cookies -> cookies.get(0))
@@ -50,11 +50,11 @@ public class AuthService {
 
         HttpEntity<Object> request = new HttpEntity<>(null, headers);
 
-        return restTemplate.exchange(
+        return catching(() -> restTemplate.exchange(
                 createUrl("/authenticate"),
                 HttpMethod.GET,
                 request,
-                AuthenticatedUser.class);
+                AuthenticatedUser.class));
     }
 
     public ResponseEntity<AuthenticatedUser> authenticate(LoginCredentials creds) {
@@ -64,20 +64,20 @@ public class AuthService {
     }
 
     public ResponseEntity<Void> register(LoginCredentials creds) {
-        Map<String, String> payload = Map.of(
-                "username", creds.getUsername(),
-                "password", creds.getPassword());
+        MultiValueMap<String, Object> params = new LinkedMultiValueMap<>();
+        params.set("username", creds.getUsername());
+        params.set("password", creds.getPassword());
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
-        HttpEntity<Map<String, String>> request = new HttpEntity<>(payload, headers);
+        HttpEntity<MultiValueMap<String, Object>> request = new HttpEntity<>(params, headers);
 
-        return restTemplate.exchange(
-                createUrl("/users"),
+        return catching(() -> restTemplate.exchange(
+                createUrl("/register"),
                 HttpMethod.POST,
                 request,
-                Void.class);
+                Void.class));
     }
 
     public ResponseEntity<Void> delete(LoginCredentials creds, String usernameToDelete) {
@@ -86,13 +86,13 @@ public class AuthService {
                     HttpHeaders headers = new HttpHeaders();
                     headers.add("Cookie", "JSESSIONID=" + authToken);
 
-                    HttpEntity<Map<String, String>> request = new HttpEntity<>(null, headers);
+                    HttpEntity<Object> request = new HttpEntity<>(null, headers);
 
-                    return restTemplate.exchange(
+                    return catching(() -> restTemplate.exchange(
                             createUrl("/users/" + usernameToDelete),
                             HttpMethod.DELETE,
                             request,
-                            Void.class);
+                            Void.class));
                 })
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
     }
@@ -107,14 +107,15 @@ public class AuthService {
 
                     HttpHeaders headers = new HttpHeaders();
                     headers.add("Cookie", authTokenName + "=" + authToken);
+                    headers.setContentType(MediaType.APPLICATION_JSON);
 
-                    HttpEntity<Object> request = new HttpEntity<>(payload, headers);
+                    HttpEntity<UpdateAuthorityRequest> request = new HttpEntity<>(payload, headers);
 
-                    return restTemplate.exchange(
+                    return catching(() -> restTemplate.exchange(
                             createUrl("/users/" + usernameToUpdate + "/authority"),
                             HttpMethod.PUT,
                             request,
-                            Void.class);
+                            Void.class));
                 })
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
     }
@@ -126,14 +127,15 @@ public class AuthService {
 
                     HttpHeaders headers = new HttpHeaders();
                     headers.add("Cookie", authTokenName + "=" + authToken);
+                    headers.setContentType(MediaType.APPLICATION_JSON);
 
-                    HttpEntity<Object> request = new HttpEntity<>(payload, headers);
+                    HttpEntity<UpdatePasswordRequest> request = new HttpEntity<>(payload, headers);
 
-                    return restTemplate.exchange(
+                    return catching(() -> restTemplate.exchange(
                             createUrl("/users/" + usernameToUpdate + "/password"),
                             HttpMethod.PUT,
                             request,
-                            Void.class);
+                            Void.class));
                 })
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
     }
@@ -146,5 +148,13 @@ public class AuthService {
 
     private String createUrl(String uri) {
         return baseUrl + uri;
+    }
+
+    private <T> ResponseEntity<T> catching(Supplier<ResponseEntity<T>> restCall) {
+        try {
+            return restCall.get();
+        } catch(HttpStatusCodeException e) {
+            return ResponseEntity.status(e.getStatusCode()).build();
+        }
     }
 }

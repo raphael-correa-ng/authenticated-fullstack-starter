@@ -10,7 +10,7 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
     networks:
-      - spring-boot-mysql-network-test
+      - spring-boot-mysql-network-it
 
   spring-boot-auth-it:
     container_name: fullstack-starter-auth-it
@@ -27,10 +27,10 @@ services:
     depends_on:
       - mysqldb-it
     networks:
-      - spring-boot-mysql-network-test
+      - spring-boot-mysql-network-it
 
 volumes:
   mysql-data:
 
 networks:
-  spring-boot-mysql-network-test:
+  spring-boot-mysql-network-it:

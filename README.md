@@ -15,7 +15,7 @@ Features authentication
 #### Build & run
 
 <pre>
-(cd back && docker-compose up --build) && (cd front && docker-compose up --build) 
+./start.sh
 </pre>
 
 Frontend: http://localhost:3000
@@ -27,7 +27,7 @@ My-Service microservice: http://localhost:8081
 #### Run integration tests
 
 <pre>
-cd back && docker-compose -f docker-compose-it.yml up --build --remove-orphans
+./run-it-tests.sh
 </pre>
 
 <hr>

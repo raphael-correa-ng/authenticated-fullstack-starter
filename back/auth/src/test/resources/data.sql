@@ -1,1 +1,5 @@
-insert into user_credentials(username, password, authority) values('admin', '$2a$10$pjnfgF1sVCN33yyEQxaisuJvGZtkepgLJlhylIeXDsfqju96K2x3e', 1) ON DUPLICATE KEY UPDATE username = username;
+INSERT INTO user_credentials(username, password, authority)
+VALUES ('testAdmin', '$2a$10$hQm6XNZi7YNzgSzgvxzofOtkh3j4Rwn8sW/35YSwSSZga/FsgrwSy', 1)
+ON DUPLICATE KEY UPDATE
+    password = VALUES(password),
+    authority = VALUES(authority);

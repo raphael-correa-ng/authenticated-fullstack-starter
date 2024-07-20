@@ -1,6 +1,5 @@
 package rcs.auth.api;
 
-import org.springframework.stereotype.Service;
 import rcs.auth.api.models.AuthenticatedUser;
 
 import javax.servlet.ServletRequest;
