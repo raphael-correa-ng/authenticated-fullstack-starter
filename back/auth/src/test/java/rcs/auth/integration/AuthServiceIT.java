@@ -32,9 +32,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class AuthServiceIT {
 
-    private static LoginCredentials admin = new LoginCredentials("testAdmin", "password");
-    private static LoginCredentials userA = new LoginCredentials(RandomString.make(), RandomString.make());
-    private static LoginCredentials userB = new LoginCredentials(RandomString.make(), RandomString.make());
+    private static final LoginCredentials admin =
+            new LoginCredentials("testAdmin", "password");
+
+    private static final LoginCredentials userA =
+            new LoginCredentials(RandomString.make(), RandomString.make());
+
+    private static final LoginCredentials userB =
+            new LoginCredentials(RandomString.make(), RandomString.make());
 
     @Value("${server.port}")
     private int port;
