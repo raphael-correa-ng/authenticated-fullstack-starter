@@ -1,6 +1,6 @@
 ## Authenticated Fullstack Starter
 
-A Kotlin/SpringBoot/MySQL microservice paired with a TypeScript/React/Redux frontend, running on Docker
+A Java/SpringBoot/MySQL microservice paired with a TypeScript/React/Redux frontend, running on Docker
 
 Features authentication
 
@@ -24,11 +24,11 @@ For development, it's better to run the frontend outside Docker:
 ./start-front-dev.sh
 </pre>
 
-Frontend: http://localhost:3000
+- Frontend: http://localhost:3000
 
-Auth microservice: http://localhost:8080
+- Auth microservice: http://localhost:8080
 
-My-Service microservice: http://localhost:8081
+- My-Service microservice: http://localhost:8081
 
 #### Run integration tests
 
@@ -40,10 +40,12 @@ My-Service microservice: http://localhost:8081
 
 #### Other features
 
-The Docker configurations here implements a way to use local Maven dependencies during build. 
+The Docker configurations here implement a way to use local Maven dependencies during build. 
 See `back/DockerFileWithDepedency`.
 
-In oder for this to work, the Docker files needed to be directly under `back/`, not inside each microservice - because Docker does not allow accessing files outside the working directory.
+In oder for this to work, the Docker files needed to be directly under `back/`, not inside each microservice, because Docker does not allow accessing files outside the working directory.
+
+This is a valid approach, but in production, it's recommended to use a remote artifact repo, such as JFrog's Artifactory.
 
 <hr>
 
@@ -68,5 +70,3 @@ Then, to access the Docker files in `back/`, you need to use the "Project Files"
 #### TODO
 
 - Need to change the `my-service` microservice to only accept authenticated requests
-- Maybe convert `auth` microservice and `auth-api` module to Kotlin
-- Fix `auth` microservice integration tests

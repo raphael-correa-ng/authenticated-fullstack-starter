@@ -1,6 +1,6 @@
 ## AuthApi
 
-Java API for Auth service
+Maven API for the `Auth` microservice
 
 ##### Install
 

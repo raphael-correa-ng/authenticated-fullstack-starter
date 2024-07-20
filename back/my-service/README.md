@@ -1,4 +1,4 @@
-## Fullstack-Starter: Backend
+## Fullstack-Starter: `my-service` microservice
 
 #### Build & run
 
