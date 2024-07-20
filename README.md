@@ -18,11 +18,11 @@ Features authentication
 ./start.sh
 </pre>
 
-Frontend: http://localhost:3000
+- Frontend: http://localhost:3000
 
-Auth microservice: http://localhost:8080
+- Auth microservice: http://localhost:8080
 
-My-Service microservice: http://localhost:8081
+- My-Service microservice: http://localhost:8081
 
 #### Run integration tests
 
