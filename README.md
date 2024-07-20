@@ -10,8 +10,6 @@ Backend: Java/Kotlin, SpringBoot, MySQL
 
 Frontend: React, TypeScript, Redux
 
-Features authentication
-
 <hr>
 
 #### Dependencies
