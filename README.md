@@ -34,10 +34,12 @@ My-Service microservice: http://localhost:8081
 
 #### Other features
 
-The Docker configurations here implements a way to use local Maven dependencies during build. 
+The Docker configurations here implement a way to use local Maven dependencies during build. 
 See `back/DockerFileWithDepedency`.
 
-In oder for this to work, the Docker files needed to be directly under `back/`, not inside each microservice - because Docker does not allow accessing files outside the working directory.
+In oder for this to work, the Docker files needed to be directly under `back/`, not inside each microservice, because Docker does not allow accessing files outside the working directory.
+
+This is a valid approach, but in production, it's recommended to use a remote artifact repo, such as JFrog's Artifactory.
 
 <hr>
 
