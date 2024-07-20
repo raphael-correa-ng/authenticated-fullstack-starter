@@ -15,7 +15,13 @@ Features authentication
 #### Build & run
 
 <pre>
-./start.sh
+./start-back.sh && ./start-front.sh
+</pre>
+
+For development, it's better to run the frontend outside Docker:
+
+<pre>
+./start-front-dev.sh
 </pre>
 
 Frontend: http://localhost:3000
