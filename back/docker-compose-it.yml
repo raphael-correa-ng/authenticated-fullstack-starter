@@ -28,7 +28,6 @@ services:
       - mysqldb-it
     networks:
       - spring-boot-mysql-network-test
-    restart: on-failure
 
 volumes:
   mysql-data:
