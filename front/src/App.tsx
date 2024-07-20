@@ -5,7 +5,7 @@ import MyService from './services/MyService';
 import StoreManager from './store/StoreManager';
 import Nav from './components/index/Nav';
 import MyModels from './components/mymodels/MyModels';
-import LoginRegister from './components/login/LoginRegister';
+import LoginRegister from './components/auth/LoginRegister';
 import './App.scss';
 
 export interface ServicesConfig {
