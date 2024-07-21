@@ -6,7 +6,7 @@ A starter-kit for a fullstack application, featuring microservices, authenticati
 
 #### Tech stack
 
-Backend: Java/Kotlin, SpringBoot, MySQL
+Backend: Java, SpringBoot, MySQL
 
 Frontend: React, TypeScript, Redux
 
@@ -21,7 +21,7 @@ Frontend: React, TypeScript, Redux
 #### Build & run
 
 <pre>
-./start-back.sh && ./start-front.sh
+./start-back.sh & ./start-front.sh
 </pre>
 
 For development, it's better to run the frontend outside Docker:

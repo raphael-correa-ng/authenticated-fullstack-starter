@@ -52,7 +52,7 @@ services:
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: password
       SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/my-service?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
-      SERVICES_AUTH_BASE_URL: http://spring-boot-auth:8080
+      SERVICES_AUTH_BASE_URL: http://spring-boot-auth-service:8080
 
 volumes:
   mysql-data:
