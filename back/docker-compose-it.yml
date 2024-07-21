@@ -13,7 +13,7 @@ services:
       - spring-boot-mysql-network-it
 
   spring-boot-auth-service-it:
-    container_name: fullstack-starter-auth-it
+    container_name: fullstack-starter-auth-service-it
     build:
       context: .
       dockerfile: DockerfileWithDependency-it
