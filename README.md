@@ -74,6 +74,10 @@ For each:
 
 Then, to access the Docker files in `back/`, you need to use the "Project Files" view. It's not perfect, but it's one way to keep the entire project in one IDE window.
 
+If Intellij doesn't find the Maven dependencies, do `File > Invalidate Caches > Invalid and restart`.
+
+MySQL wouldn't start on Docker, solved by [this](https://stackoverflow.com/questions/77344634/azerothcore-docker-install-db-fails-with-upgrade-is-not-supported-after-a-cras).
+
 <hr>
 
 #### Upcoming work
