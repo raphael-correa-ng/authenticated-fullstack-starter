@@ -28,6 +28,10 @@ services:
       - mysqldb-it
     networks:
       - spring-boot-mysql-network-it
+    environment:
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: password
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb-it:3306/my-service?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
 
 volumes:
   mysql-data:
