@@ -30,7 +30,7 @@ services:
     environment:
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: password
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/my-service?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/auth?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
 
   spring-boot-my-service:
     container_name: fullstack-starter-my-service
