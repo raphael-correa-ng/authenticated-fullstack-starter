@@ -73,3 +73,11 @@ For each:
 - `back/my-service/pom.xml`
 
 Then, to access the Docker files in `back/`, you need to use the "Project Files" view. It's not perfect, but it's one way to keep the entire project in one IDE window.
+
+<hr>
+
+#### Upcoming work
+
+- Upgrade to Spring Boot 3
+- Upgrade to JUnit 5
+- Add a web-socket service starter
