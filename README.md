@@ -1,6 +1,6 @@
 ## Authenticated Fullstack Starter
 
-A starter-kit for a fullstack application, featuring microservices, authentication, integration tests, and running on Docker
+A starter-kit for a fullstack application, featuring microservices, authentication, and integration tests - all running on Docker
 
 <hr>
 
@@ -35,7 +35,7 @@ For development, it's better to run the frontend outside Docker:
 - Auth microservice: http://localhost:8080
 
 - My-Service microservice: http://localhost:8081
-- 
+
 <hr>
 
 #### Run integration tests
