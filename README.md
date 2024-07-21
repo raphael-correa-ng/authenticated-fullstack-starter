@@ -24,7 +24,7 @@ Frontend: React, TypeScript, Redux
 ./start-back.sh & ./start-front.sh
 </pre>
 
-For development, it's better to run the frontend outside Docker:
+For development, it's better to run the frontend outside Docker, in order to have live-reloading of changes:
 
 <pre>
 ./start-front-dev.sh
