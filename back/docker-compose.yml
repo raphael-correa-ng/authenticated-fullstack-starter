@@ -10,10 +10,10 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
     networks:
-      - spring-boot-mysql-network
+      - mysql-network
 
-  spring-boot-auth-service:
-    container_name: fullstack-starter-auth-service
+  auth-service:
+    container_name: auth-service
     build:
       context: .
       dockerfile: DockerfileWithDependency
@@ -25,15 +25,15 @@ services:
     depends_on:
       - mysqldb
     networks:
-      - spring-boot-mysql-network
+      - mysql-network
     restart: on-failure
     environment:
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: password
       SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/auth?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
 
-  spring-boot-my-service:
-    container_name: fullstack-starter-my-service
+  my-service:
+    container_name: my-service
     build:
       context: .
       dockerfile: DockerfileWithDependency
@@ -44,18 +44,18 @@ services:
       - "8081:8081"
     depends_on:
       - mysqldb
-      - spring-boot-auth-service
+      - auth-service
     networks:
-      - spring-boot-mysql-network
+      - mysql-network
     restart: on-failure
     environment:
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: password
       SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/my-service?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
-      SERVICES_AUTH_BASE_URL: http://spring-boot-auth-service:8080
+      SERVICES_AUTH_BASE_URL: http://auth-service:8080
 
 volumes:
   mysql-data:
 
 networks:
-  spring-boot-mysql-network:
+  mysql-network:

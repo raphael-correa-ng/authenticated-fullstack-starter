@@ -10,10 +10,10 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
     networks:
-      - spring-boot-mysql-network-it
+      - mysql-network-it
 
-  spring-boot-auth-service-it:
-    container_name: fullstack-starter-auth-service-it
+  auth-service-it:
+    container_name: auth-service-it
     build:
       context: .
       dockerfile: DockerfileWithDependency-it
@@ -27,7 +27,7 @@ services:
     depends_on:
       - mysqldb-it
     networks:
-      - spring-boot-mysql-network-it
+      - mysql-network-it
     environment:
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: password
@@ -37,4 +37,4 @@ volumes:
   mysql-data:
 
 networks:
-  spring-boot-mysql-network-it:
+  mysql-network-it:

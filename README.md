@@ -35,11 +35,14 @@ For development, it's better to run the frontend outside Docker:
 - Auth microservice: http://localhost:8080
 
 - My-Service microservice: http://localhost:8081
+- 
+<hr>
 
 #### Run integration tests
 
+Auth-service:
 <pre>
-./run-it-tests.sh
+./run-auth-service-it-tests.sh
 </pre>
 
 <hr>
