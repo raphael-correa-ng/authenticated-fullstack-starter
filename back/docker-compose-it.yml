@@ -12,14 +12,14 @@ services:
     networks:
       - spring-boot-mysql-network-it
 
-  spring-boot-auth-it:
+  spring-boot-auth-service-it:
     container_name: fullstack-starter-auth-it
     build:
       context: .
       dockerfile: DockerfileWithDependency-it
       args:
         DEPENDENCY: auth-api
-        SERVICE: auth
+        SERVICE: auth-service
     ports:
       - target: 7070
         published: 7070

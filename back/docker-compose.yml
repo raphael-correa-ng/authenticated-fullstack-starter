@@ -12,14 +12,14 @@ services:
     networks:
       - spring-boot-mysql-network
 
-  spring-boot-auth:
-    container_name: fullstack-starter-auth
+  spring-boot-auth-service:
+    container_name: fullstack-starter-auth-service
     build:
       context: .
       dockerfile: DockerfileWithDependency
       args:
         DEPENDENCY: auth-api
-        SERVICE: auth
+        SERVICE: auth-service
     ports:
       - "8080:8080"
     depends_on:
@@ -44,7 +44,7 @@ services:
       - "8081:8081"
     depends_on:
       - mysqldb
-      - spring-boot-auth
+      - spring-boot-auth-service
     networks:
       - spring-boot-mysql-network
     restart: on-failure

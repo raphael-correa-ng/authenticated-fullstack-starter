@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>com.rcs</groupId>
-    <artifactId>fullstack-starter-auth</artifactId>
+    <artifactId>fullstack-starter-auth-service</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
