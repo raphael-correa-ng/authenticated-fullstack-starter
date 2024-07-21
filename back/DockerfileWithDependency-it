@@ -19,4 +19,4 @@ COPY ${SERVICE}/src ./src
 COPY --from=BUILD-DEPENDENCY /usr/src/rcs/${DEPENDENCY}/target/fullstack-starter-${DEPENDENCY}-1.0-SNAPSHOT.jar ./fullstack-starter-${DEPENDENCY}-1.0-SNAPSHOT.jar
 RUN mvn install:install-file -Dfile=fullstack-starter-${DEPENDENCY}-1.0-SNAPSHOT.jar -DgroupId=com.rcs -DartifactId=fullstack-starter-${DEPENDENCY} -Dversion=1.0-SNAPSHOT -Dpackaging=jar
 
-ENTRYPOINT ["mvn", "clean", "verify"]
+ENTRYPOINT ["mvn", "clean", "install", "-Pintegration-tests"]
