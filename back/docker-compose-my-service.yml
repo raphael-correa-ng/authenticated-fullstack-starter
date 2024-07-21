@@ -6,31 +6,11 @@ services:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: example
     ports:
-      - "3307:3306"
+      - "3308:3306"
     volumes:
       - mysql-data:/var/lib/mysql
     networks:
-      - mysql-network
-
-  auth-service:
-    container_name: auth-service
-    build:
-      context: .
-      dockerfile: DockerfileWithDependency
-      args:
-        DEPENDENCY: auth-api
-        SERVICE: auth-service
-    ports:
-      - "8080:8080"
-    depends_on:
-      - mysqldb
-    networks:
-      - mysql-network
-    restart: on-failure
-    environment:
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: password
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/auth?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
+      - fullstack-starter-network
 
   my-service:
     container_name: my-service
@@ -44,9 +24,8 @@ services:
       - "8081:8081"
     depends_on:
       - mysqldb
-      - auth-service
     networks:
-      - mysql-network
+      - fullstack-starter-network
     restart: on-failure
     environment:
       SPRING_DATASOURCE_USERNAME: root
@@ -58,4 +37,4 @@ volumes:
   mysql-data:
 
 networks:
-  mysql-network:
+  fullstack-starter-network:

@@ -16,7 +16,7 @@ services:
     container_name: auth-service-it
     build:
       context: .
-      dockerfile: DockerfileWithDependency-it
+      dockerfile: DockerfileWithDependencyIT
       args:
         DEPENDENCY: auth-api
         SERVICE: auth-service
